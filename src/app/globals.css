@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  color: theme("colors.cream");
+  background: theme("colors.forest.deep");
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App background: subtle forest gradient used across the product */
+.bg-dexy {
+  background:
+    radial-gradient(120% 80% at 50% -10%, #1f3326 0%, rgba(31, 51, 38, 0) 55%),
+    linear-gradient(180deg, #192a1f 0%, #132018 100%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .input-dexy {
+    @apply w-full rounded-lg border border-border bg-forest-deep/70 px-4 py-3
+      text-cream placeholder:text-muted/60 outline-none transition
+      focus:border-orange/70 focus:ring-2 focus:ring-orange/20;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-orange
+      px-5 py-3 font-medium text-forest-deep transition hover:bg-orange-hover
+      active:scale-[0.99] disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border
+      border-border bg-forest-surface/60 px-5 py-3 font-medium text-cream
+      transition hover:bg-forest-raised active:scale-[0.99];
+  }
+  .card-dexy {
+    @apply rounded-2xl border border-border bg-forest-surface shadow-card;
+  }
+  .link-orange {
+    @apply font-semibold text-orange hover:text-orange-soft;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* hide scrollbars on horizontal feeds */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
